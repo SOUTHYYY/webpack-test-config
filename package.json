@@ -1,0 +1,33 @@
+{
+  "name": "webpack-training",
+  "version": "1.0.0",
+  "description": "webpack training",
+  "main": "index.js",
+  "scripts": {
+    "start": "node \"./scripts/webpack/start.js\"",
+    "build": "node \"./scripts/webpack/build.js\"",
+    "serve": "serve \"./dist\" -s"
+  },
+  "keywords": [
+    "js",
+    "webpack",
+    "react"
+  ],
+  "author": "SOUTHYYY <leshka.l1337@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "app-root-path": "^3.0.0",
+    "chalk": "^4.0.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.5.3",
+    "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "prettier": "^2.0.5",
+    "serve": "^11.3.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.43.0",
+    "webpack-dev-server": "^3.10.3",
+    "webpack-hot-middleware": "^2.25.0"
+  },
+  "dependencies": {}
+}
