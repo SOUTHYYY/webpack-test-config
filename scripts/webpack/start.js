@@ -10,31 +10,47 @@ const getConfig = require('./webpack.config');
 // Constants
 const { HOST, PORT } = require('./constants')
 
+// Utils
+const { choosePort } = require('./utils')
+
 const compiler = webpack(getConfig());
 
+(async () => {
+    try {
+        choosePort(PORT)
+            .then((port) => {
+                if (!port) {
+                    console.log(chalk.yellowBright('It\'s possible ti run the app'))
+                    return
+                }
+                const server = new devServer(compiler, {
+                    host: HOST,
+                    port: port,
+                    historyApiFallback: true,
+                    overlay: true,
+                    quiet: true,
+                    clientLogLevel: 'none',
+                    noInfo: true,
+                    after: (app) => {
+                        app.use(
+                            hot(compiler, {
+                                log: false
+                            })
+                        )
+                    }
+                })
 
-const server = new devServer(compiler, {
-    host: HOST,
-    port: PORT,
-    historyApiFallback: true,
-    overlay: true,
-    quiet: true,
-    clientLogLevel: 'none',
-    noInfo: true,
-    after: (app) => {
-        app.use(
-            hot(compiler, {
-                log: false
+                server.listen(port, HOST, () => {
+                    console.log(
+                        `${chalk.greenBright('Server is listening on ✅')} ${chalk.greenBright(
+                            `http://${HOST}:${port}`
+                        )}`
+                    )
+                })
             })
-        )
+    } catch (err) {
+        console.log(chalk.redBright('Error!'))
+        console.error(error.message || error)
     }
-})
 
-server.listen(PORT, HOST, (error) => {
-
-    console.log(
-        `${chalk.greenBright('Server is listening on ✅')} ${chalk.greenBright(
-            `http://${HOST}:${PORT}`
-        )}`
-    )
-})
+})()
