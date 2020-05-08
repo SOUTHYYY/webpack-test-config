@@ -16,7 +16,12 @@
   "author": "SOUTHYYY <leshka.l1337@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
     "app-root-path": "^3.0.0",
+    "babel-loader": "^8.1.0",
     "chalk": "^4.0.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.5.3",
@@ -24,12 +29,19 @@
     "html-webpack-plugin": "^4.3.0",
     "inquirer": "^7.1.0",
     "mini-css-extract-plugin": "^0.9.0",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.7.0",
     "prettier": "^2.0.5",
+    "react-hot-loader": "^4.12.21",
     "serve": "^11.3.0",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-dev-server": "^3.10.3",
-    "webpack-hot-middleware": "^2.25.0"
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-merge": "^4.2.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
 }

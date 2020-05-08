@@ -5,7 +5,7 @@ const devServer = require('webpack-dev-server')
 const hot = require('webpack-hot-middleware')
 
 // Config 
-const getConfig = require('./webpack.config');
+const getDevConfig = require('./config/webpack.dev');
 
 // Constants
 const { HOST, PORT } = require('./constants')
@@ -13,7 +13,7 @@ const { HOST, PORT } = require('./constants')
 // Utils
 const { choosePort } = require('./utils')
 
-const compiler = webpack(getConfig());
+const compiler = webpack(getDevConfig());
 
 (async () => {
     try {
