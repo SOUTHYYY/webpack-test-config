@@ -3,7 +3,7 @@ const env = require('postcss-preset-env')
 exports.loadCss = () => ({
   module: {
     rules: [
-      { //TODO: прокачать загрузку стилей
+      {
         test: /\.css$/i,
         use: ['style-loader',
           {
@@ -54,13 +54,6 @@ exports.loadCss = () => ({
             }
           },
         ],
-      },
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        loader: 'file-loader',
-        options: {
-          name: '[path][name].[ext]',
-        },
       },
     ],
   }

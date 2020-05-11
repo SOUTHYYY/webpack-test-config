@@ -5,8 +5,7 @@ const merge = require('webpack-merge')
 const { BUILD_DIRECTORY, SOURSE_DIRECTORY } = require('../constants')
 
 // Modules 
-const { loadJavaScript, setupHtml, loadCss } = require('../modules')
-
+const { loadJavaScript, loadImages, loadCss, setupHtml } = require('../modules')
 
 /**
  * ТИПЫ КОНФИГОВ WEBPACK
@@ -26,7 +25,9 @@ module.exports = () => {
         entry: './src/index.js',
     },
         loadJavaScript.loadJavaSCript(),
+        loadCss.loadCss(),
+        loadImages.loadImages(),
+        loadSvg.loadSvg(),
         setupHtml.setupHtml(),
-        loadCss.loadCss()
     );
 };
