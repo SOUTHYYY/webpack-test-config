@@ -1,9 +1,9 @@
 // Core
-const webpack = require('webpack');
-const chalk = require('chalk');
+const webpack = require('webpack')
+const chalk = require('chalk')
 
 // Config 
-const getProdConfig = require('./config/webpack.prod');
+const getProdConfig = require('./config/webpack.prod')
 
 const compiler = webpack(getProdConfig());
 
@@ -18,7 +18,7 @@ compiler.run((error, stats) => {
 
         return null
     }
-    
+
     const info = stats.toString({
         hash: true,
         colors: true,
@@ -30,12 +30,12 @@ compiler.run((error, stats) => {
     console.log(chalk.greenBright('✅ Build completed'));
     console.log(info);
 
-    if(stats.hasErrors()) {
+    if (stats.hasErrors()) {
         // Ошибка во время компиляции (битый импорт, ошибка синтаксиса, etc)
         console.log(chalk.redBright('🚫 Error!'));
     }
 
-    if(stats.hasWarnings()) {
+    if (stats.hasWarnings()) {
         // Ворнинг во время компиляции
         console.log(chalk.yellowBright('⚠️ Warning!'));
     }

@@ -3,7 +3,7 @@ module.exports = (api) => {
 
     api.cache.never() //TODO:
 
-    const plugins = ['@babel/plugin-proposal-class-properties']
+    const plugins = ['@babel/plugin-proposal-class-properties', '@babel/plugin-syntax-dynamic-import']
 
     if (env === 'development') {
         plugins.push('react-hot-loader/babel')
@@ -27,7 +27,7 @@ module.exports = (api) => {
             ],
             [
                 '@babel/preset-react'
-            ]
+            ],
         ],
         plugins: plugins
     }

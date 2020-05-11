@@ -6,7 +6,7 @@ const getCommonConfig = require('./webpack.common')
 
 module.exports = () => {
     return merge(getCommonConfig(), {
-        mode: 'none',
-        devtool: false, // TODO: настроить sourse maps
+        mode: 'development',
+        devtool: 'cheap-module-eval-source-map',
     });
 };

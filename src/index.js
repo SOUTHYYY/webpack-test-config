@@ -1,20 +1,24 @@
 // import './index.css';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import './exampleBalel'
+import './index.css'
+
+import toy from '../images/toy.jpg'
 
 console.log('Hello world');
 
-
-import React from 'react'
-
-const Index = () =>  {
+const Index = () => {
     console.log('hello I\'m React Component test')
     return (
         <div>
-            <h1>Hello React</h1>    
-        </div>
+            <img src =  {toy }  width = '400'/>
+            <h1>Hello React</h1>
+        </div >
     )
 }
 
-Index()
+
+ReactDOM.render(<Index />, document.getElementById('app'))
 
 export default Index

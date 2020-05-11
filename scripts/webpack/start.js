@@ -1,17 +1,18 @@
 // Core
-const webpack = require('webpack');
-const chalk = require('chalk');
+const webpack = require('webpack')
+const chalk = require('chalk')
 const devServer = require('webpack-dev-server')
 const hot = require('webpack-hot-middleware')
+const openBrowser = require('react-dev-utils/openBrowser')
 
 // Config 
-const getDevConfig = require('./config/webpack.dev');
+const getDevConfig = require('./config/webpack.dev')
 
 // Constants
 const { HOST, PORT } = require('./constants')
 
 // Utils
-const { choosePort } = require('./utils')
+const { choosePort } =  require('./utils')
 
 const compiler = webpack(getDevConfig());
 
@@ -47,6 +48,8 @@ const compiler = webpack(getDevConfig());
                         )}`
                     )
                 })
+
+                openBrowser(`http://${HOST}:${port}`)
             })
     } catch (err) {
         console.log(chalk.redBright('Error!'))
