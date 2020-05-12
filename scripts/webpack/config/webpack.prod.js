@@ -1,5 +1,6 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const merge = require('webpack-merge')
+const {loadProdCss} = require('../modules')
 
 // Consts
 const { BUILD_DIRECTORY, PROJECT_ROOT } = require('../constants')
@@ -13,10 +14,14 @@ let cleanOptions = {
 }
 
 module.exports = () => {
-    return  merge(getCommonConfig(), {
-        mode: 'production',
-        devtool: false,
-        entry: './src/index.js',
-        plugins: [ new CleanWebpackPlugin({ BUILD_DIRECTORY, cleanOptions }) ]
-    });
+    return merge(
+        getCommonConfig(),
+        {
+            mode: 'production',
+            devtool: false,
+            entry: './src/index.js',
+            plugins: [new CleanWebpackPlugin({ BUILD_DIRECTORY, cleanOptions })]
+        },
+        loadProdCss()
+    );
 };

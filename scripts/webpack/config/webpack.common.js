@@ -1,11 +1,13 @@
 // Core
+const { DefinePlugin } = require('webpack')
 const merge = require('webpack-merge')
+
 
 // Consts
 const { BUILD_DIRECTORY, SOURSE_DIRECTORY } = require('../constants')
 
 // Modules 
-const { loadJavaScript, loadImages, loadCss, setupHtml } = require('../modules')
+const { loadJavaScript, loadImages, loadSvg, loadFonts, setupHtml } = require('../modules')
 
 /**
  * ТИПЫ КОНФИГОВ WEBPACK
@@ -15,19 +17,29 @@ const { loadJavaScript, loadImages, loadCss, setupHtml } = require('../modules')
 **/
 
 module.exports = () => {
+    const { NODE_ENV } = process.env
     return merge({
         entry: SOURSE_DIRECTORY,
         output: {
             path: BUILD_DIRECTORY,
-            filename: 'bundle.js'
+            filename: 'js/bundle.js',
+            // Плагины склеивают assets из корня 
+            publicPath: '/'
         },
-        mode: 'none',
-        entry: './src/index.js',
+        plugins: [
+            new DefinePlugin({
+                __ENV__: JSON.stringify(NODE_ENV),
+                __DEV__: NODE_ENV === 'development',
+                __STAGE__: NODE_ENV === 'stage',
+                __PROD__: NODE_ENV === 'production'
+            })
+        ]
     },
         loadJavaScript.loadJavaSCript(),
-        loadCss.loadCss(),
         loadImages.loadImages(),
-        loadSvg.loadSvg(),
+        // ?? Посмотреть по поводу SVG
+        // loadSvg.loadSvg(),
+        loadFonts.loadFonts(),
         setupHtml.setupHtml(),
     );
 };
